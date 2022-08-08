@@ -1,0 +1,12 @@
+Lab Question 1: The following methods are private in tictactoe_board:
+     - the constructor: __init__
+     - __row_as_string
+     - __str__
+     - __three_in_row
+     - __is_winner
+
+
+Lab Question 2: The instance variable is self.__board. Instance variables are properties given to objects in the constructor by giving them a value. In our case, instance variables are private variables. The only private instance variable in the constructor is self.__board, however the constructor does take in a parameter 'rows'. Instead of initializing self.__board by setting it directly equal to 'rows', the instance variable is initialized by an empty list, which is appended to as explained in question 3.
+
+Lab Question 3: the internal representation of the tic tac toe board is as follows:
+    - although the constructor parameter 'rows' intakes a single list of X's, O's and spaces, the board is represented as a list of lists. Within the main self.__board list, there are 3 lists within it, one for each row of the tic tac toe board. These lists contain the /n command to ensure that they are each on their own line. Essentially, the constructor takes the first 3 items of the initial 'rows' list, (whether it's an X, O, or space for a blank space) and puts these three items in a separate list, and then appends this to the empty self.__board list. The constructor does this a total of 3 times, for a total of 9 characters, and 3 internal lists.

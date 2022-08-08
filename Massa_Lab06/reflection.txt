@@ -1,0 +1,49 @@
+SORT 1 FUNCTION:
+*the following columns compare list size vs. the # of list accesses*
+
+Random:				Identical:			Sorted:				Reverse Sorted:
+100	1545			100	1511			100	4966			100	4631
+200	3422			200	3423			200	19851			200	16215
+500	9845			500	9351			500	116468			500	96637
+1000	21956			1000	20703			1000	462244			1000	367790
+2000	46421			2000	45407			2000	1844584			2000	1544768
+2250	54205			2250	55023			2250	2336808			2250	1917324
+3000	78718			3000	72511			3000	4151788			3000	3424074
+5000	130825			5000	131167			5000	11458107			5000	9495973
+10000	286928			10000	282335			10000	45845514			10000	38100476
+20000	621918			20000	604671			20000	182883212		20000	150010018
+
+The worst case running times for the sort 1 function are sorted lists and reverse sorted lists. I arrived at this conclusion because the big-o notation I calculated for sorted and reverse sorted was O(n^2), whereas the big-o notation I calculated for random and identical was O(n). I calculated all four of the big-o notations by analyzing the tables above. First, I made sure to look at the last 3 rows for each category (5000, 10000, and 20000). I did so because in order to calculate big-o I had to ensure I was looking at the largest calculations to ensure accuracy; looking at the smaller and first several rows may produce inaccurate results due to the fact that with smaller coordinates the graph might not have yet taken shape. Next, I began to compare the relationship between each row. For example, in the random type, when the list size doubled from 5000 to 10000, the number of list accesses also doubled (130825 *2 ≈ 286928). Although this is an approximation, this relationship held true with other values in random as well (as the list size doubled from 10000 to 20000, the number of list accesses also doubled: 286928 *2 ≈ 621918). This led me to conclude that the overall relationship was linear, and therefore the big o-notation was o(n). This analysis was also true for the identical category. In comparison though, I concluded that the relationship for the sorted and reverse sorted categories were quadratic, or big-o notation of O(n^2). I reached this result because as values in the list size column doubled, the values in the number of list accesses quadrupled. For example, in sorted, 5000 *2 = 10000, and 11458107 *4 ≈ 45845514. 
+
+
+SORT 2 FUNCTION: 
+*the following columns compare list size vs. the # of list accesses*
+
+Random:			Identical:  		Sorted:				Reverse Sorted:
+100	29999800		100	29999800		100	29999800		100	29999800
+200	29999600		200	29999600		200	29999600		200	29999600
+500	29999000		500	29999000		500	29999000		500	29999000
+1000	29998000		1000	29998000		1000	29998000		1000	29998000
+2000	29996000		2000	29996000		2000	29996000		2000	29996000
+2250	29995500		2250	29995500		2250	29995500		2250	29995500
+3000	29994000		3000	29994000		3000	29994000		3000	35981938
+5000	73776476		5000	29990000		5000	29990000		5000	99960068
+10000	295357606	10000	29980000		10000	29980000		10000	399939978
+20000	1193423728	20000	29960000		20000	29960000		20000	1599880130
+
+The worst case running times for the sort 2 function are random lists and reverse sorted lists. I arrived at this conclusion because the big-o notation I calculated for identical and sorted was O(1), whereas the big-o notation I calculated for random and identical was O(n^2). I calculated all four of the big-o notations by analyzing the tables above. Similarly to the sort 1 function, I made sure to look at the last 3 rows for each category, for previously listed reasons. Next, I began to compare the relationship between each row. For the identical and sorted categories, I calculated a constant relationship, resulting in a big o notation of O(1). The relationship was constant because as the list size changed (doubled, tripled, etc.) the number of list accesses stayed relatively the same number: the values in the second column did not change, they remained constant. Contrastingly, I calculated that the random and reverse sorted list category contained a big o notation of O(n^2) because as the list size doubled, the number of list accesses quadrupled. For example, in random, 5000 *2 = 10000, and 73776476 *4 ≈ 295357606. This relationship held true with other values in the list (10000 to 20000), therefore I was able to conclude that the overall relationship for random, as well as reverse sorted, was quadratic, and the worst case run time. 
+
+LIST GENERATOR FUNCTION (code added for sorted and reverse sorted): 
+
+    elif kind == "sorted":
+        for i in range(length):
+            data.append(random.randint(1, length))
+        data.sort()
+    elif kind == "reverse-sorted":
+        for i in range(length):
+            data.append(random.randint(1, length))
+        data.sort(reverse = True)
+
+    return data
+
+
